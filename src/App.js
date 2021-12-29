@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import MobileNav from "./components/MobileNav";
+import WelcomeContent from "./components/Welcome";
+import BottomSection from "./components/BottomSection";
+import TicketSection from "./components/TickectSection";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className="App">
+        <Header />
+        <MobileNav />
+        <Switch>
+          <Route exact path = "/">
+            <WelcomeContent />
+            <BottomSection />
+          </Route>
+
+          <Route path="/basic">
+            <TicketSection title="Basic" amount = {1}/>
+          </Route>
+
+          <Route path="/investor">
+            <TicketSection title="Investor" amount = {10}/>
+          </Route>
+
+          <Route path="/whale">
+            <TicketSection title="Whale" amount = {100}/>
+          </Route>
+        </Switch>
     </div>
+    </Router>
   );
 }
 

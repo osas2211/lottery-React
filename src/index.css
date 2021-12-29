@@ -1,13 +1,354 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Poppins:wght@200;300&family=Roboto+Mono:wght@300;400&display=swap');
+
+/*
+    --bg-color2: #244d949a;
+    --bg-color3: #244d9449;
+
+    old-preferred
+    --bg-color: #112240;
+    --bg-color2: #1d3e75;
+*/
+:root{
+    --bg-color: #183363;
+    --bg-color2: #1e478f;
+    --bg-color3: #244d9449;
+    --secondary-color-1: #64ffda;
+    --secondary-color-2: #F8C630;
+    --red: #E63946;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono",Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "PT Sans",Arial, Helvetica, sans-serif;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.ham{
+    display: none;
+}
+
+.btn{
+    padding: 0.7rem;
+    background-color: var(--red);
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 1px 2px 5px #112240;
+    display: inline-block;
+}
+.btn:hover{
+    opacity: 0.9;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+.text-muted{
+    opacity: 0.6;
+}
+.hide-nav{
+    margin-top: -50rem;
+}
+.show-nav{
+    margin-right: 0;
+}
+
+
+.close{
+    display: none;
+}
+
+.main-header, .main-nav, .welcome-content, .cards, .card, .mobile-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.main-header{
+    background-color: var(--bg-color2);
+    text-transform: uppercase;
+    width: 100%;
+    padding: 1rem 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 4% 100%);
+    border-bottom: 1px solid var(--red);
+    position: relative;
+    z-index: 10;
+}
+
+.main-nav{
+    width: 25vw;
+}
+.main-nav li, .mobile-nav li{
+    transition: .3s ease-in-out;
+}
+.main-nav li:hover:not(:last-child), .mobile-nav li:hover:not(:last-child){
+    border-bottom: 1px solid var(--red);
+    padding-bottom: 0.5rem;
+}
+.mobile-nav{
+    flex-direction: column;
+    height: 42vh;
+    width: 92vw;
+    position: absolute;
+    background-color: var(--bg-color2);
+    top: 4.1rem;
+    right: 0;
+    z-index: 4;
+    padding: 2rem;
+    transition: .2s ease-in-out;
+    display: none;
+}
+
+.logo{
+    margin-left: 5rem;
+    letter-spacing: 3px;
+}
+.logo span{
+    color: var(--red);
+}
+
+.welcome-content{
+    margin: 5rem 5rem 16rem 5rem;
+    flex-wrap: nowrap;
+}
+
+.welcome-content .btn{
+    margin-top: 1rem;
+    box-shadow: 1px 4px 5px #162d55;
+}
+
+.welcome p:first-child, .welcome h2{
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.welcome p:first-child{
+    color: var(--red);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: "PT Sans",Arial, Helvetica, sans-serif;
+}
+
+.welcome h2{
+    font-size: 4rem;
+}
+.welcome .text-muted{
+    margin-top: 0.5rem;
+    width: 70%;
+}
+
+
+.welcome-img{
+    width: 40rem;
+}
+
+.bottom-section{
+    background-color: var(--bg-color3);
+    padding-bottom: 2rem;
+}
+
+
+.card-1, .card-2, .card-3{
+    background-color: var(--bg-color2);
+    flex-direction: column;
+    width: 20rem;
+    height: 22rem;
+    text-transform: uppercase;
+    padding: 2rem;
+    margin-top: -11rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 2px 13px #19264179;
+}
+
+.amount{
+    font-size: 1.6rem;
+}
+
+.card-1 .btn, .card-2 .btn, .card-3 .btn{
+    width: 7rem;
+    text-align: center;
+}
+.card-2 .btn{
+    background-color: var(--secondary-color-1);
+}
+
+.card-3 .btn{
+    background-color: var(--secondary-color-2);
+}
+
+.card-img-1, .card-img-2, .card-img-3{
+    width: 8rem;
+    height: 8rem;
+    padding: 1rem;
+    border-radius: 50%;
+    border: 10px solid var(--red);
+    position: relative;
+}
+.card-img-1::after, .card-img-2::after, .card-img-3::after{
+    content: "";
+    position: absolute;
+    top: -1.4rem;
+    right: -1.4rem;
+    padding: 0.4rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1rem solid #e639473a;
+}
+
+.card-img-2{
+    border-color: var(--secondary-color-1);
+}
+.card-img-2::after{
+    border-color: #64ffdb28;
+}
+
+.card-img-3{
+    border-color: var(--secondary-color-2);
+}
+.card-img-3::after{
+    border-color: #f8c63027;
+}
+
+.randomizer{
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+    font-size: 2rem;
+    letter-spacing: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ticket{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-img{
+    width: 5rem;
+    margin-right: 1rem;
+    transform: rotate(45deg);
+}
+
+.ticket-type{
+    font-size: 1.3rem;
+    margin-top: 2rem;
+}
+
+.transaction-history{
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.transaction-history h2{
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    word-spacing: 8px;
+}
+table{
+    border-collapse: separate;
+}
+td, th{
+    padding: 0.5rem;
+    border: 1px solid var(--bg-color2);
+}
+th{
+    text-transform: uppercase;
+}
+thead{
+    background-color: var(--bg-color2);
+}
+
+@media (max-width: 1000px) {
+
+    .main-nav{
+        display: none;
+    }
+    .logo{
+        margin-left: 2rem;
+    }
+    .show{
+        display: block;
+    }
+    .mobile-nav{
+        display: flex;
+        height: 30vh;
+    }
+
+
+    .card-1, .card-2, .card-3{
+        width: 25vw;
+    }
+    .cards{
+        flex-wrap: nowrap;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    body{
+        overflow: visible;
+    }
+
+    .welcome-content{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5rem 0rem 16rem 0rem;
+    }
+
+    .welcome-img{
+        margin-top: 2rem;
+        width: 23rem;
+    }
+
+    .cards{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .card-1, .card-2, .card-3{
+        width: 20rem;
+    }
+
+    .card-2, .card-3{
+        margin-top: 3rem;
+    }
+    .mobile-nav{
+        height: 42vh;
+    }
+
+
+    
 }
