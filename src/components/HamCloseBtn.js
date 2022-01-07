@@ -3,29 +3,21 @@ import closeImg from "../images/icon-close.svg";
 import { useState } from "react";
 
 const HamCloseBtn = () => {
-    const [display, setDisplay] = useState(()=> {
-        return {close_: "close", ham: "ham show"}
-    });
-    const nav = () =>{
-        setDisplay(()=>{
-            const mobile = document.querySelector(".mobile-nav");
-            mobile.classList.remove("hide-nav");
-            return {close_: "close show", ham: "ham"}
-        });
-    }
-    const nav_ = () => {
-        setDisplay(()=> {
-            const mobile = document.querySelector(".mobile-nav");
-            mobile.classList.add("hide-nav");
-            return {close_: "close", ham: "ham show"}
-        })
+    const [display, setDisplay] = useState(["close", "ham show"])
+    const hamOpenHandler = ()=>{
+        setDisplay(["ham show", "close"])
+        document.querySelector(".mobile-nav").classList.toggle("hide-nav");
+    } 
+    const hamCloseHandler = ()=>{
+        setDisplay(["close", "ham show"])
+        document.querySelector(".mobile-nav").classList.toggle("hide-nav");
     }
     return (
         <>
-            <a href="#" className={display.ham} onClick={nav}>
+            <a href="#" className={display[1]} onClick={hamOpenHandler}>
                 <img src={hamburger} alt="" srcSet=""></img>
             </a>
-            <a href="#" className={display.close_} onClick={nav_}>
+            <a href="#" className={display[0]} onClick={hamCloseHandler}>
                 <img src={closeImg} alt="" srcSet=""></img>
             </a>
         </>

@@ -104,7 +104,7 @@ a{
 }
 
 .main-nav{
-    width: 25vw;
+    width: 28vw;
 }
 .main-nav li, .mobile-nav li{
     transition: .3s ease-in-out;
@@ -287,6 +287,22 @@ th{
 }
 thead{
     background-color: var(--bg-color2);
+}
+
+.coming-soon{
+    display: grid;
+    height: 80vh;
+    place-items: center;
+    width: 80%;
+    margin: auto;
+    
+}
+.coming-soon p {
+    font-size: 2rem;
+    border: 1px solid #fff;
+    padding: 3rem;
+    border-radius: 4px;
+    text-align: center;
 }
 
 @media (max-width: 1000px) {

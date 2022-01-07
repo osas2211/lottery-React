@@ -3,6 +3,7 @@ import MobileNav from "./components/MobileNav";
 import WelcomeContent from "./components/Welcome";
 import BottomSection from "./components/BottomSection";
 import TicketSection from "./components/TickectSection";
+import ComingSoon  from "./components/ComingSoon";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
 
           <Route path="/whale">
             <TicketSection title="Whale" amount = {100}/>
+          </Route>
+
+          <Route path="/coming">
+            <ComingSoon />
           </Route>
         </Switch>
     </div>
