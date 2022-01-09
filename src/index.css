@@ -246,6 +246,14 @@ a{
     justify-content: space-between;
     align-items: center;
 }
+.randomizer span{
+    display: inline-block;
+    
+}
+.ml_{
+    margin-left: -4rem;
+}
+
 .ticket{
     display: flex;
     flex-direction: column;
@@ -262,6 +270,9 @@ a{
 .ticket-type{
     font-size: 1.3rem;
     margin-top: 2rem;
+}
+.get-ticket{
+    display: none;
 }
 
 .transaction-history{

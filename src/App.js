@@ -5,13 +5,20 @@ import BottomSection from "./components/BottomSection";
 import TicketSection from "./components/TickectSection";
 import ComingSoon  from "./components/ComingSoon";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [mobileNav, setMobileNav] = useState("hide-nav");
+  const hideNav = (val)=>{
+    console.log(val)
+    setMobileNav(val)
+  }
+
   return (
     <Router>
       <div className="App">
-        <Header />
-        <MobileNav />
+        <Header hide_={hideNav}/>
+        <MobileNav hide={mobileNav} />
         <Switch>
           <Route exact path = "/">
             <WelcomeContent />

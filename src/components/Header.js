@@ -1,14 +1,12 @@
 import MainNav from "./MainNav";
 import HamCloseBtn from "./HamCloseBtn";
 
-const Header = () => {
-
-
+const Header = (props) => {
     return(
         <header className="main-header">
             <h2 className="logo">LOG<span>o</span></h2>
             <MainNav />
-            <HamCloseBtn />
+            <HamCloseBtn hider_={props.hide_}/>
         </header>
     )
 }

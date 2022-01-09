@@ -2,15 +2,15 @@ import hamburger from "../images/icon-hamburger.svg";
 import closeImg from "../images/icon-close.svg";
 import { useState } from "react";
 
-const HamCloseBtn = () => {
+const HamCloseBtn = (props) => {
     const [display, setDisplay] = useState(["close", "ham show"])
     const hamOpenHandler = ()=>{
         setDisplay(["ham show", "close"])
-        document.querySelector(".mobile-nav").classList.toggle("hide-nav");
+        props.hider_(" ")
     } 
     const hamCloseHandler = ()=>{
         setDisplay(["close", "ham show"])
-        document.querySelector(".mobile-nav").classList.toggle("hide-nav");
+        props.hider_("hide-nav")
     }
     return (
         <>

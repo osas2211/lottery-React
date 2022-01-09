@@ -1,26 +1,33 @@
 import ticket_ from "../images/ticket.png";
 import TranscHistory from "./TransactionHistory";
+import { useState } from "react";
 
 const TicketSection = (props) => {
+    const [randomVal, setRandomVal] = useState("Get a #Ticket");
+    const [gettingEffect, setGettingEffect] = useState(" ");
+    const [ticketBTN, setTicketBTN] = useState(" ");
+    const [getTicketVal, setGetTicketVal] = useState("Get Ticket")
+    const [ticketImg, setTicketImg] = useState(" ")
+    const [mlr, setMlr] = useState("ml_") 
+
     const getTicket = ()=>{
-        const randomizer = document.querySelector(".randomizer");
-        const ticketBTN = document.querySelector(".get-ticket");
-        const getting = document.querySelector(".getting");
         let counter = 0;
-        
-        
+
         function updater(){
-            randomizer.innerHTML = `<span>${Math.random(1076).toString().slice(2,10)}</span>`;
-            getting.innerHTML = "Getting Ticket...";
-            ticketBTN.style.display = "none";
+            setRandomVal(Math.random(1076).toString().slice(2,10));
+            setGettingEffect("Getting Ticket...");
+            setTicketBTN("get-ticket");
+            setMlr("")
             counter++
     
             if (counter === 40){
                 clearInterval(refresh)
-                randomizer.innerHTML = ` <img src="${ticket_}" alt="" class="ticket-img"> <span>${Math.random(1076).toString().slice(2,10)}</span>`;
-                ticketBTN.style.display = "block";
-                ticketBTN.innerHTML = "Get Another Ticket";
-                getting.innerHTML = "";
+                setRandomVal(Math.random(1076).toString().slice(2,10));
+                setTicketImg(ticket_);
+                setTicketBTN(" ");
+                setGetTicketVal("Get Another Ticket")
+                setGettingEffect("")
+                
             }
         }
     
@@ -31,9 +38,9 @@ const TicketSection = (props) => {
         <>
             <div className="ticket container">
                 <p className="ticket-type">{props.title} ${props.amount}</p>
-                <p className="randomizer"> <span>Get a #Ticket ID</span></p>
-                <a href="#" className="btn get-ticket" onClick={getTicket}>Get Ticket</a>
-                <p className="getting"></p>
+                <p className="randomizer"><img src={ticketImg} alt="" className={`ticket-img ${ticketBTN}`}></img> <span className={mlr}>{randomVal}</span></p>
+                <a href="#" className={"btn "+ ticketBTN} onClick={getTicket}>{getTicketVal}</a>
+                <p className="getting">{gettingEffect}</p>
             </div>
             <TranscHistory address = "abcdefgxfshdidyugah1627dhdjk" type = "Whale" ticket={43243543}/>
         </>

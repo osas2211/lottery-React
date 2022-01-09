@@ -1,10 +1,6 @@
 
 const TranscHistory = (props)=>{
 
-        const addr = document.querySelectorAll(".address");
-        addr.forEach((address) => {
-        address.innerHTML = `${address.textContent.slice(0,8)}....`
-    })
     return (
         <div className="transaction-history">
 
@@ -20,7 +16,7 @@ const TranscHistory = (props)=>{
                 <tbody>
                     <tr>
                         <td>{props.type}</td>
-                        <td className="address">{props.address}</td>
+                        <td className="address">{props.address.slice(0,8)+"..."}</td>
                         <td>{props.ticket}</td>
                     </tr>
                 </tbody>

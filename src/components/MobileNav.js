@@ -1,6 +1,6 @@
 const MobileNav = (props) => {
     return (
-        <ul className="mobile-nav hide-nav">
+        <ul className={"mobile-nav " + props.hide}>
             <li><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
